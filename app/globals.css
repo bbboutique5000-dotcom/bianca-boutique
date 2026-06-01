@@ -1,26 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --plum:       #513550;
+  --plum-mid:   #745E73;
+  --mauve:      #D3BCC5;
+  --lavender:   #EBE1E5;
+  --cream:      #FCFAFB;
+  --cream-dark: #F5EFF1;
+  --dark:       #1a1a1a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-plum:       #513550;
+  --color-plum-mid:   #745E73;
+  --color-mauve:      #D3BCC5;
+  --color-lavender:   #EBE1E5;
+  --color-cream:      #FCFAFB;
+  --color-cream-dark: #F5EFF1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cream);
+  color: var(--dark);
 }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--lavender); }
+::-webkit-scrollbar-thumb { background: var(--plum-mid); border-radius: 3px; }
