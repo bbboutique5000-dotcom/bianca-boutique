@@ -90,7 +90,7 @@ export default function Footer() {
               {[
                 { label: 'hola@biancaboutique.es' },
                 { label: '+34 600 000 000' },
-                { label: 'Calle del Ejemplo, 1 · Madrid' },
+                { label: 'Calle de Serrano, 45 · 28001 Madrid' },
                 { label: 'Lun–Vie: 10:00 – 20:00' },
                 { label: 'Sábado: 10:00 – 18:00' },
               ].map((item) => (

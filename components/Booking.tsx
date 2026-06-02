@@ -91,6 +91,16 @@ export default function Booking() {
                   label: 'Horario',
                   value: 'Lun–Vie: 10:00 – 20:00 · Sáb: 10:00 – 18:00',
                 },
+                {
+                  icon: (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  ),
+                  label: 'Ubicación',
+                  value: 'Calle de Serrano, 45, 28001 Madrid',
+                },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className="text-[#D3BCC5] mt-0.5 shrink-0">{item.icon}</div>
@@ -257,6 +267,35 @@ export default function Booking() {
             )}
           </div>
         </div>
+
+        {/* Mapa */}
+        <div className="mt-16">
+          <div className="flex items-center gap-3 mb-6">
+            <svg className="w-5 h-5 text-[#D3BCC5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span
+              className="text-[#D3BCC5] text-xs tracking-[0.3em] uppercase"
+              style={{ fontFamily: "'Lato', sans-serif" }}
+            >
+              Cómo llegar — Calle de Serrano, 45, 28001 Madrid
+            </span>
+          </div>
+          <div className="w-full h-72 overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.8!2d-3.6888!3d40.4296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228f0c3f4b0b1%3A0x6c6d9e5e5e5e5e5e!2sCalle%20de%20Serrano%2C%2045%2C%2028001%20Madrid!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: 'grayscale(20%) contrast(1.1)' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación Bianca Boutique"
+            />
+          </div>
+        </div>
+
       </div>
     </section>
   );
