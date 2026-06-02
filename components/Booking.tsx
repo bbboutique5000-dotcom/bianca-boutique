@@ -17,12 +17,13 @@ type FormState = {
   telefono: string;
   servicio: string;
   fecha: string;
+  hora: string;
   mensaje: string;
 };
 
 export default function Booking() {
   const [form, setForm] = useState<FormState>({
-    nombre: '', email: '', telefono: '', servicio: '', fecha: '', mensaje: '',
+    nombre: '', email: '', telefono: '', servicio: '', fecha: '', hora: '', mensaje: '',
   });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -41,6 +42,8 @@ export default function Booking() {
     if (!form.email.trim() && !form.telefono.trim())
       errs.contacto = 'Indica al menos un email o un teléfono';
     if (!form.servicio) errs.servicio = 'Selecciona un servicio';
+    if (!form.fecha) errs.fecha = 'La fecha es obligatoria';
+    if (!form.hora) errs.hora = 'La hora es obligatoria';
     return errs;
   };
 
@@ -60,6 +63,7 @@ export default function Booking() {
           Teléfono: form.telefono || '—',
           Servicio: form.servicio,
           'Fecha preferida': form.fecha || '—',
+          'Hora preferida': form.hora || '—',
           Mensaje: form.mensaje || '—',
         }),
       });
@@ -210,15 +214,28 @@ export default function Booking() {
                   {errors.servicio && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
                 </div>
 
-                {/* Fecha */}
-                <div>
-                  <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
-                    Fecha preferida
-                  </label>
-                  <input
-                    type="date" name="fecha" value={form.fecha} onChange={handle}
-                    className={inputClass('fecha')} style={{ fontFamily: "'Lato', sans-serif" }}
-                  />
+                {/* Fecha + Hora */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
+                      Fecha <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="date" name="fecha" value={form.fecha} onChange={handle}
+                      className={inputClass('fecha')} style={{ fontFamily: "'Lato', sans-serif" }}
+                    />
+                    {errors.fecha && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.fecha}</p>}
+                  </div>
+                  <div>
+                    <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
+                      Hora <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="time" name="hora" value={form.hora} onChange={handle}
+                      className={inputClass('hora')} style={{ fontFamily: "'Lato', sans-serif" }}
+                    />
+                    {errors.hora && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.hora}</p>}
+                  </div>
                 </div>
 
                 {/* Mensaje */}
