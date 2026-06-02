@@ -40,7 +40,7 @@ export default function Navbar() {
       <div className="hidden md:flex items-center justify-between pl-8 pr-40 h-[78px]">
         {/* Logo — igual que "Chic Lash / Boutique" en la referencia */}
         <a
-          href="#inicio"
+          href="/"
           className="flex flex-col leading-none shrink-0 group"
         >
           <span
@@ -93,7 +93,7 @@ export default function Navbar() {
       {/* Mobile */}
       <div className="md:hidden flex items-center justify-between px-5 py-3">
         <a
-          href="#inicio"
+          href="/"
           className="text-white text-base tracking-widest italic"
           style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
         >
