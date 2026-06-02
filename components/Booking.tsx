@@ -2,6 +2,26 @@
 
 import { useState } from 'react';
 
+const generarHoras = (desde: number, hasta: number) => {
+  const slots: string[] = [];
+  for (let h = desde; h < hasta; h++) {
+    slots.push(`${String(h).padStart(2, '0')}:00`);
+    slots.push(`${String(h).padStart(2, '0')}:30`);
+  }
+  return slots;
+};
+
+const horasLaborables = generarHoras(10, 20); // Lun–Vie: 10:00–19:30
+const horasSabado     = generarHoras(10, 18); // Sáb: 10:00–17:30
+
+const getHorasDisponibles = (fecha: string) => {
+  if (!fecha) return horasLaborables;
+  const dia = new Date(fecha).getUTCDay(); // 0=Dom, 6=Sáb
+  if (dia === 0) return [];       // Domingo cerrado
+  if (dia === 6) return horasSabado;
+  return horasLaborables;
+};
+
 const servicios = [
   'Extensiones de Pestañas',
   'Diseño de Cejas',
@@ -230,10 +250,28 @@ export default function Booking() {
                     <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
                       Hora <span className="text-red-400">*</span>
                     </label>
-                    <input
-                      type="time" name="hora" value={form.hora} onChange={handle}
-                      className={inputClass('hora')} style={{ fontFamily: "'Lato', sans-serif" }}
-                    />
+                    {(() => {
+                      const horas = getHorasDisponibles(form.fecha);
+                      if (form.fecha && horas.length === 0) {
+                        return (
+                          <p className="text-[#745E73] text-xs py-3 px-4 border border-[#D3BCC5] bg-[#F5EFF1]" style={{ fontFamily: "'Lato', sans-serif" }}>
+                            Domingos cerrado. Elige otra fecha.
+                          </p>
+                        );
+                      }
+                      return (
+                        <select
+                          name="hora" value={form.hora} onChange={handle}
+                          className={`${inputClass('hora')} appearance-none`}
+                          style={{ fontFamily: "'Lato', sans-serif" }}
+                        >
+                          <option value="">Selecciona una hora</option>
+                          {horas.map((h) => (
+                            <option key={h} value={h}>{h}</option>
+                          ))}
+                        </select>
+                      );
+                    })()}
                     {errors.hora && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.hora}</p>}
                   </div>
                 </div>
