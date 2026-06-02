@@ -210,7 +210,7 @@ const allProducts = {
 type LineKey = keyof typeof allProducts;
 
 export default function ProductosPage() {
-  const [activeTab, setActiveTab] = useState<LineKey>('elite');
+  const [activeTab, setActiveTab] = useState<LineKey>('excelente');
   const line = allProducts[activeTab];
 
   return (
