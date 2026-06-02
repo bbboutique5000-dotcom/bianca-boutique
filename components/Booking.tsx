@@ -21,14 +21,40 @@ export default function Booking() {
     mensaje: '',
   });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError(false);
+    try {
+      const res = await fetch('https://formspree.io/f/xykvrvwr', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          Nombre: form.nombre,
+          Email: form.email,
+          Teléfono: form.telefono,
+          Servicio: form.servicio,
+          'Fecha preferida': form.fecha,
+          Mensaje: form.mensaje,
+        }),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -256,12 +282,21 @@ export default function Booking() {
                   />
                 </div>
 
+                {error && (
+                  <p
+                    className="text-red-400 text-xs text-center"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
+                  >
+                    Hubo un error al enviar. Inténtalo de nuevo o escríbenos por WhatsApp.
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#513550] hover:bg-[#745E73] text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
+                  disabled={loading}
+                  className="w-full py-4 bg-[#513550] hover:bg-[#745E73] disabled:opacity-60 text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
                   style={{ fontFamily: "'Lato', sans-serif" }}
                 >
-                  Enviar Solicitud
+                  {loading ? 'Enviando...' : 'Enviar Solicitud'}
                 </button>
               </form>
             )}
