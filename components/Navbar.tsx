@@ -3,11 +3,11 @@
 import { useState } from 'react';
 
 const links = [
-  { label: 'Servicios',     href: '#servicios' },
-  { label: 'Acerca de Mí',  href: '#nosotras' },
-  { label: 'Reservar Cita', href: '#reservar' },
-  { label: 'Productos',     href: '#productos' },
-  { label: 'Galería',       href: '#galeria' },
+  { label: 'Servicios',     href: '/#servicios' },
+  { label: 'Acerca de Mí',  href: '/#nosotras' },
+  { label: 'Reservar Cita', href: '/#reservar' },
+  { label: 'Productos',     href: '/#productos' },
+  { label: 'Galería',       href: '/#galeria' },
 ];
 
 const socials = [
