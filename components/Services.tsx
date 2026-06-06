@@ -67,7 +67,7 @@ export default function Services() {
             className="text-[#745E73] text-xs tracking-[0.4em] uppercase block mb-4"
             style={{ fontFamily: "'Lato', sans-serif" }}
           >
-            Lo que ofrecemos
+            Estudio de Belleza · Madrid
           </span>
           <h2
             className="text-[#513550] text-4xl md:text-5xl font-light tracking-wide mb-6"

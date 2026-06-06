@@ -61,7 +61,7 @@ export default function About() {
               style={{ fontFamily: "'Lato', sans-serif" }}
             >
               Soy Bianca, artista especializada en belleza ocular y tratamientos faciales
-              con más de <strong>10 años de experiencia</strong> dedicados en cuerpo y alma
+              en Madrid, con más de <strong>10 años de experiencia</strong> dedicados en cuerpo y alma
               a realzar la belleza natural de cada mujer. Lo que comenzó como una pasión
               silenciosa en mi habitación, se convirtió con los años en un oficio de precisión
               y un compromiso inquebrantable con la excelencia.
