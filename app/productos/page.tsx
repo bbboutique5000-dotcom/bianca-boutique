@@ -322,11 +322,7 @@ export default function ProductosPage() {
                     >
                       {p.price}
                     </span>
-                    <a
-                      href="/#reservar"
-                      className="px-3 py-1.5 text-[9px] tracking-[0.2em] uppercase border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white transition-all duration-300"
-                      style={{ fontFamily: "'Lato', sans-serif" }}
-                    >
+                    <a href="/#reservar" className="btn-secondary !py-2 !px-3">
                       Pedir
                     </a>
                   </div>
@@ -337,11 +333,7 @@ export default function ProductosPage() {
 
           {/* Volver */}
           <div className="text-center">
-            <Link
-              href="/"
-              className="inline-block px-10 py-4 border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
-              style={{ fontFamily: "'Lato', sans-serif" }}
-            >
+            <Link href="/" className="btn-secondary">
               ← Volver al Inicio
             </Link>
           </div>

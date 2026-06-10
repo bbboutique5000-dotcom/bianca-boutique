@@ -132,11 +132,7 @@ export default function Services() {
 
         {/* CTA */}
         <div className="text-center mt-14">
-          <a
-            href="#reservar"
-            className="inline-block px-10 py-4 bg-[#513550] hover:bg-[#745E73] text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
-            style={{ fontFamily: "'Lato', sans-serif" }}
-          >
+          <a href="#reservar" className="btn-primary">
             Reservar Ahora
           </a>
         </div>

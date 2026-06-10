@@ -235,11 +235,7 @@ export default function Products() {
                   >
                     {p.price}
                   </span>
-                  <a
-                    href="#reservar"
-                    className="px-4 py-2 text-[10px] tracking-[0.2em] uppercase border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white transition-all duration-300"
-                    style={{ fontFamily: "'Lato', sans-serif" }}
-                  >
+                  <a href="#reservar" className="btn-secondary !py-2 !px-4">
                     Pedir
                   </a>
                 </div>
@@ -250,11 +246,7 @@ export default function Products() {
 
         {/* Botón ver más */}
         <div className="text-center">
-          <a
-            href="/productos"
-            className="inline-block px-12 py-4 border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
-            style={{ fontFamily: "'Lato', sans-serif" }}
-          >
+          <a href="/productos" className="btn-primary">
             Ver Más Productos
           </a>
         </div>

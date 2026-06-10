@@ -92,12 +92,10 @@ export default function Booking() {
     finally { setLoading(false); }
   };
 
-  const inputClass = (name: string) =>
-    `w-full px-4 py-3 text-sm text-[#513550] outline-none transition-colors border ${
-      errors[name] || (name === 'email' || name === 'telefono') && errors.contacto
-        ? 'border-red-400 bg-red-50'
-        : 'border-[#D3BCC5] bg-white focus:border-[#513550]'
-    }`;
+  const inputClass = (name: string) => {
+    const hasError = errors[name] || ((name === 'email' || name === 'telefono') && errors.contacto);
+    return hasError ? 'form-input error' : 'form-input';
+  };
 
   return (
     <section id="reservar" className="py-24 bg-[#513550]">
@@ -294,11 +292,7 @@ export default function Booking() {
                   </p>
                 )}
 
-                <button
-                  type="submit" disabled={loading}
-                  className="w-full py-4 bg-[#513550] hover:bg-[#745E73] disabled:opacity-60 text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
-                >
+                <button type="submit" disabled={loading} className="btn-primary w-full">
                   {loading ? 'Enviando...' : 'Enviar Solicitud'}
                 </button>
               </form>

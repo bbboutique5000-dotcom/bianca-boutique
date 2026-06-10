@@ -86,11 +86,7 @@ export default function About() {
               seguro y duradero.
             </p>
 
-            <a
-              href="#reservar"
-              className="inline-block px-8 py-3 border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white text-xs tracking-[0.25em] uppercase transition-all duration-300"
-              style={{ fontFamily: "'Lato', sans-serif" }}
-            >
+            <a href="#reservar" className="btn-secondary">
               Reserva tu Cita
             </a>
           </div>

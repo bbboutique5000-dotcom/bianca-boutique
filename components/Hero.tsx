@@ -40,11 +40,7 @@ export default function Hero() {
         </h1>
 
         {/* Botón — borde blanco, sin relleno, igual al original */}
-        <a
-          href="#reservar"
-          className="inline-block px-6 py-2.5 border border-white text-white text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-300"
-          style={{ fontFamily: "'Lato', sans-serif" }}
-        >
+        <a href="#reservar" className="btn-primary">
           Reserva un servicio &rsaquo;
         </a>
       </div>
