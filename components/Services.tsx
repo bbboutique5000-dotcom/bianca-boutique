@@ -3,57 +3,57 @@ import Image from 'next/image';
 const services = [
   {
     id: 1,
-    title: 'Extensiones de Pestañas',
+    title: 'Depilación con Hilo',
     description:
-      'Realza tu mirada con extensiones aplicadas una a una. Resultado natural o dramático según tu estilo, con materiales hipoalergénicos de primera calidad.',
-    img: '/images/extension-pestanas.jpg',
-    duration: '90 – 120 min',
-    desde: 'Desde 80 €',
+      'Técnica de precisión milenaria para eliminar el vello facial. Diseño de cejas, labios, barbilla, cara completa y más. Resultados limpios y duraderos.',
+    img: '/images/brow-threading.png',
+    duration: '2 – 30 min',
+    desde: 'Desde 1 €',
   },
   {
     id: 2,
-    title: 'Diseño de Cejas',
+    title: 'Lifting de Pestañas',
     description:
-      'Enmarcamos tu rostro con la forma perfecta para tus cejas mediante hilo, cera o pinzas. Definición precisa para una mirada más expresiva.',
-    img: '/images/brow-threading.png',
-    duration: '30 – 45 min',
-    desde: 'Desde 25 €',
+      'Eleva y riza tus pestañas naturales con resultado duradero hasta 8 semanas. Disponible en versión tradicional, fusión y coreana para cada tipo de pestaña.',
+    img: '/images/service-lift.png',
+    duration: '45 – 90 min',
+    desde: 'Desde 40 €',
   },
   {
     id: 3,
-    title: 'Maquillaje Semipermanente',
+    title: 'Laminado de Cejas',
     description:
-      'Despiértate perfecta cada día. Aplicamos pigmentos de larga duración en cejas, eyeliner o labios para un look impecable sin esfuerzo diario.',
-    img: '/images/gallery-09.jpg',
-    duration: '90 – 120 min',
-    desde: 'Desde 150 €',
+      'Define y fija tus cejas con efecto peinado y lleno. Laminado tradicional o coreano para un resultado natural, denso y de larga duración.',
+    img: '/images/extension-pestanas.jpg',
+    duration: '20 – 35 min',
+    desde: 'Desde 45 €',
   },
   {
     id: 4,
-    title: 'La Experiencia Facial Bianca',
+    title: 'Henna de Cejas',
     description:
-      'Un tratamiento facial exclusivo diseñado para nutrir, iluminar y rejuvenecer tu piel. Te llevamos a un estado de relajación profunda mientras cuidamos tu rostro.',
-    img: '/images/facial.png',
-    duration: '60 – 75 min',
-    desde: 'Desde 70 €',
-  },
-  {
-    id: 5,
-    title: 'Servicios de Tinte',
-    description:
-      'Intensifica el color de tus pestañas o cejas con tintes de larga duración. Ideal como complemento al lifting o al diseño de cejas.',
-    img: '/images/service-tint.png',
-    duration: '20 – 30 min',
+      'Coloración natural con henna de larga duración, sola o combinada con diseño de cejas para un resultado completo, definido y de aspecto saludable.',
+    img: '/images/gallery-05.jpg',
+    duration: '20 – 35 min',
     desde: 'Desde 20 €',
   },
   {
-    id: 6,
-    title: 'Lifting & Laminado de Cejas',
+    id: 5,
+    title: 'Tinte de Cejas y Pestañas',
     description:
-      'Eleva y fija tus pestañas naturales con un lifting duradero hasta 8 semanas, y define tus cejas con laminado profesional para un efecto peinado y lleno.',
-    img: '/images/service-lift.png',
-    duration: '60 – 90 min',
-    desde: 'Desde 55 €',
+      'Intensifica el color y la profundidad de tu mirada con tinte de larga duración. Tratamiento rápido, eficaz y sin mantenimiento diario.',
+    img: '/images/service-tint.png',
+    duration: '8 – 10 min',
+    desde: '12 €',
+  },
+  {
+    id: 6,
+    title: 'Tratamientos Faciales',
+    description:
+      'Limpieza facial, Microshading, Glossyps e Hidrolips. Técnicas premium para el cuidado, definición y embellecimiento de tu rostro.',
+    img: '/images/facial.png',
+    duration: '30 – 120 min',
+    desde: 'Desde 50 €',
   },
 ];
 

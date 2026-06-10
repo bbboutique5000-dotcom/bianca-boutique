@@ -23,12 +23,63 @@ const getHorasDisponibles = (fecha: string) => {
 };
 
 const servicios = [
-  'Extensiones de Pestañas',
-  'Diseño de Cejas',
-  'Maquillaje Semipermanente',
-  'La Experiencia Facial Bianca',
-  'Servicios de Tinte',
-  'Lifting & Laminado de Cejas',
+  {
+    group: 'Depilación con Hilo',
+    options: [
+      'Diseño de cejas — 13 €',
+      'Depilación de labios — 7 €',
+      'Depilación contorno de labios — 1 €',
+      'Depilación de barbilla — 7 €',
+      'Depilación de patillas — 10 €',
+      'Depilación de mejillas — 7 €',
+      'Depilación de nariz — 3 €',
+      'Depilación de entrecejos — 3 €',
+      'Depilación de sienes — 6 €',
+      'Depilación de frente — 10 €',
+      'Depilación de cuello — 12 €',
+      'Depilación de orejas — 8 €',
+      'Depilación de dedos — 8 €',
+      'Depilación cara completa — 33 €',
+    ],
+  },
+  {
+    group: 'Lifting de Pestañas',
+    options: [
+      'Lifting tradicional — 40 €',
+      'Lifting fusión — 75 €',
+      'Lifting coreano — 90 €',
+    ],
+  },
+  {
+    group: 'Laminado de Cejas',
+    options: [
+      'Laminado tradicional — 45 €',
+      'Laminado coreano — 50 €',
+    ],
+  },
+  {
+    group: 'Henna',
+    options: [
+      'Henna — 20 €',
+      'Henna + diseño de cejas — 30 €',
+    ],
+  },
+  {
+    group: 'Tinte',
+    options: [
+      'Tinte de cejas — 12 €',
+      'Tinte de pestañas — 12 €',
+    ],
+  },
+  {
+    group: 'Tratamientos Faciales',
+    options: [
+      'Limpieza facial — 50 €',
+      'Microshading — 250 €',
+      'Glossyps — 250 €',
+      'Hidrolips — 80 €',
+    ],
+  },
 ];
 
 type FormState = {
@@ -224,10 +275,16 @@ export default function Booking() {
                   </label>
                   <select
                     name="servicio" value={form.servicio} onChange={handle}
-                    className={`${inputClass('servicio')} appearance-none`} style={{ fontFamily: "'Lato', sans-serif" }}
+                    className={inputClass('servicio')}
                   >
                     <option value="">Selecciona un servicio</option>
-                    {servicios.map((s) => <option key={s} value={s}>{s}</option>)}
+                    {servicios.map((group) => (
+                      <optgroup key={group.group} label={group.group}>
+                        {group.options.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </optgroup>
+                    ))}
                   </select>
                   {errors.servicio && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
                 </div>
