@@ -46,6 +46,7 @@ export default function Navbar() {
             width={200}
             height={124}
             className="object-contain"
+            style={{ filter: 'brightness(0) saturate(100%) invert(19%) sepia(34%) saturate(584%) hue-rotate(261deg) brightness(95%) contrast(91%)' }}
             priority
           />
         </a>
@@ -92,6 +93,7 @@ export default function Navbar() {
             width={160}
             height={99}
             className="object-contain"
+            style={{ filter: 'brightness(0) saturate(100%) invert(19%) sepia(34%) saturate(584%) hue-rotate(261deg) brightness(95%) contrast(91%)' }}
             priority
           />
         </a>
