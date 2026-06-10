@@ -86,6 +86,7 @@ type FormState = {
   nombre: string;
   email: string;
   telefono: string;
+  categoria: string;
   servicio: string;
   fecha: string;
   hora: string;
@@ -94,7 +95,7 @@ type FormState = {
 
 export default function Booking() {
   const [form, setForm] = useState<FormState>({
-    nombre: '', email: '', telefono: '', servicio: '', fecha: '', hora: '', mensaje: '',
+    nombre: '', email: '', telefono: '', categoria: '', servicio: '', fecha: '', hora: '', mensaje: '',
   });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -103,7 +104,11 @@ export default function Booking() {
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm((prev) => {
+      const next = { ...prev, [name]: value };
+      if (name === 'categoria') next.servicio = '';
+      return next;
+    });
     setErrors((prev) => { const next = { ...prev }; delete next[name]; delete next.contacto; return next; });
   };
 
@@ -132,7 +137,8 @@ export default function Booking() {
           Nombre: form.nombre,
           Email: form.email || '—',
           Teléfono: form.telefono || '—',
-          Servicio: form.servicio,
+          Categoría: form.categoria,
+          Tratamiento: form.servicio,
           'Fecha preferida': form.fecha || '—',
           'Hora preferida': form.hora || '—',
           Mensaje: form.mensaje || '—',
@@ -268,26 +274,40 @@ export default function Booking() {
                   </div>
                 </div>
 
-                {/* Servicio */}
+                {/* Categoría de servicio */}
                 <div>
                   <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
                     Servicio <span className="text-red-400">*</span>
                   </label>
                   <select
-                    name="servicio" value={form.servicio} onChange={handle}
+                    name="categoria" value={form.categoria} onChange={handle}
                     className={inputClass('servicio')}
                   >
-                    <option value="">Selecciona un servicio</option>
-                    {servicios.map((group) => (
-                      <optgroup key={group.group} label={group.group}>
-                        {group.options.map((s) => (
-                          <option key={s} value={s}>{s}</option>
-                        ))}
-                      </optgroup>
+                    <option value="">Selecciona una categoría</option>
+                    {servicios.map((s) => (
+                      <option key={s.group} value={s.group}>{s.group}</option>
                     ))}
                   </select>
-                  {errors.servicio && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
                 </div>
+
+                {/* Tratamiento específico — aparece al elegir categoría */}
+                {form.categoria && (
+                  <div>
+                    <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
+                      Tratamiento <span className="text-red-400">*</span>
+                    </label>
+                    <select
+                      name="servicio" value={form.servicio} onChange={handle}
+                      className={inputClass('servicio')}
+                    >
+                      <option value="">Selecciona el tratamiento</option>
+                      {servicios.find((s) => s.group === form.categoria)?.options.map((o) => (
+                        <option key={o} value={o}>{o}</option>
+                      ))}
+                    </select>
+                    {errors.servicio && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
+                  </div>
+                )}
 
                 {/* Fecha + Hora */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
