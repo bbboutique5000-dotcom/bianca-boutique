@@ -159,6 +159,11 @@ export default function Booking() {
     if (!form.nombre.trim()) errs.nombre = 'El nombre es obligatorio';
     if (!form.email.trim() && !form.telefono.trim())
       errs.contacto = 'Indica al menos un email o un teléfono';
+    if (form.telefono.trim()) {
+      const tel = form.telefono.trim().replace(/[\s.\-()]/g, '');
+      if (!/^(\+34|0034)?[6-9]\d{8}$/.test(tel))
+        errs.telefono = 'Teléfono no válido. Debe tener 9 dígitos (ej: 612 345 678)';
+    }
     if (!form.tratamientos.some((t) => t.servicio.trim()))
       errs.servicio = 'Selecciona al menos un tratamiento';
     if (!form.fecha) errs.fecha = 'La fecha es obligatoria';
@@ -210,6 +215,7 @@ export default function Booking() {
     const hasError = errors[name] || ((name === 'email' || name === 'telefono') && errors.contacto);
     return hasError ? 'form-input error' : 'form-input';
   };
+
 
   return (
     <section id="reservar" className="py-24 bg-[#513550]">
@@ -323,11 +329,14 @@ export default function Booking() {
                       className={inputClass('email')} style={{ fontFamily: "'Lato', sans-serif" }}
                       placeholder="tucorreo@email.com"
                     />
-                    <input
-                      type="tel" name="telefono" value={form.telefono} onChange={handle}
-                      className={inputClass('telefono')} style={{ fontFamily: "'Lato', sans-serif" }}
-                      placeholder="+34 600 000 000"
-                    />
+                    <div>
+                      <input
+                        type="tel" name="telefono" value={form.telefono} onChange={handle}
+                        className={inputClass('telefono')} style={{ fontFamily: "'Lato', sans-serif" }}
+                        placeholder="+34 600 000 000"
+                      />
+                      {errors.telefono && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.telefono}</p>}
+                    </div>
                   </div>
                 </div>
 
