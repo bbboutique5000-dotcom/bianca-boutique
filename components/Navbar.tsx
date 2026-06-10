@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 const links = [
   { label: 'Servicios',     href: '/#servicios' },
@@ -38,22 +39,15 @@ export default function Navbar() {
       {/* Desktop */}
       <div className="hidden md:flex items-center justify-between pl-8 pr-40 h-[78px]">
         {/* Logo — igual que "Chic Lash / Boutique" en la referencia */}
-        <a
-          href="/"
-          className="flex flex-col leading-none shrink-0 group"
-        >
-          <span
-            className="text-[#513550] text-[26px] font-normal tracking-wide leading-tight"
-            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-          >
-            Bianca
-          </span>
-          <span
-            className="text-[#513550]/80 text-[12px] font-light tracking-[0.22em] leading-tight"
-            style={{ fontFamily: "'Lato', sans-serif" }}
-          >
-            Boutique<span className="text-[8px] align-super ml-0.5">®</span>
-          </span>
+        <a href="/" className="shrink-0">
+          <Image
+            src="/images/logo.png"
+            alt="Bianca Boutique"
+            width={130}
+            height={80}
+            className="object-contain"
+            priority
+          />
         </a>
 
         {/* Nav links + socials agrupados juntos */}
@@ -91,12 +85,15 @@ export default function Navbar() {
 
       {/* Mobile */}
       <div className="md:hidden flex items-center justify-between px-5 py-3">
-        <a
-          href="/"
-          className="text-white text-base tracking-widest italic"
-          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-        >
-          Bianca Boutique
+        <a href="/">
+          <Image
+            src="/images/logo.png"
+            alt="Bianca Boutique"
+            width={100}
+            height={62}
+            className="object-contain"
+            priority
+          />
         </a>
         <button
           onClick={() => setOpen(!open)}
