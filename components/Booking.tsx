@@ -82,12 +82,13 @@ const servicios = [
   },
 ];
 
+type TreatmentItem = { categoria: string; servicio: string };
+
 type FormState = {
   nombre: string;
   email: string;
   telefono: string;
-  categoria: string;
-  servicio: string;
+  tratamientos: TreatmentItem[];
   fecha: string;
   hora: string;
   mensaje: string;
@@ -95,7 +96,9 @@ type FormState = {
 
 export default function Booking() {
   const [form, setForm] = useState<FormState>({
-    nombre: '', email: '', telefono: '', categoria: '', servicio: '', fecha: '', hora: '', mensaje: '',
+    nombre: '', email: '', telefono: '',
+    tratamientos: [{ categoria: '', servicio: '' }],
+    fecha: '', hora: '', mensaje: '',
   });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -104,12 +107,32 @@ export default function Booking() {
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setForm((prev) => {
-      const next = { ...prev, [name]: value };
-      if (name === 'categoria') next.servicio = '';
-      return next;
-    });
+    setForm((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => { const next = { ...prev }; delete next[name]; delete next.contacto; return next; });
+  };
+
+  const handleTratamiento = (index: number, field: 'categoria' | 'servicio', value: string) => {
+    setForm((prev) => {
+      const tratamientos = [...prev.tratamientos];
+      tratamientos[index] = { ...tratamientos[index], [field]: value };
+      if (field === 'categoria') tratamientos[index].servicio = '';
+      return { ...prev, tratamientos };
+    });
+    setErrors((prev) => { const next = { ...prev }; delete next.servicio; return next; });
+  };
+
+  const addTratamiento = () => {
+    setForm((prev) => ({
+      ...prev,
+      tratamientos: [...prev.tratamientos, { categoria: '', servicio: '' }],
+    }));
+  };
+
+  const removeTratamiento = (index: number) => {
+    setForm((prev) => ({
+      ...prev,
+      tratamientos: prev.tratamientos.filter((_, i) => i !== index),
+    }));
   };
 
   const validate = () => {
@@ -117,7 +140,8 @@ export default function Booking() {
     if (!form.nombre.trim()) errs.nombre = 'El nombre es obligatorio';
     if (!form.email.trim() && !form.telefono.trim())
       errs.contacto = 'Indica al menos un email o un teléfono';
-    if (!form.servicio) errs.servicio = 'Selecciona un servicio';
+    if (!form.tratamientos.some((t) => t.servicio.trim()))
+      errs.servicio = 'Selecciona al menos un tratamiento';
     if (!form.fecha) errs.fecha = 'La fecha es obligatoria';
     if (!form.hora) errs.hora = 'La hora es obligatoria';
     return errs;
@@ -137,8 +161,10 @@ export default function Booking() {
           Nombre: form.nombre,
           Email: form.email || '—',
           Teléfono: form.telefono || '—',
-          Categoría: form.categoria,
-          Tratamiento: form.servicio,
+          Tratamientos: form.tratamientos
+            .filter((t) => t.servicio)
+            .map((t) => t.servicio)
+            .join(' | '),
           'Fecha preferida': form.fecha || '—',
           'Hora preferida': form.hora || '—',
           Mensaje: form.mensaje || '—',
@@ -274,40 +300,71 @@ export default function Booking() {
                   </div>
                 </div>
 
-                {/* Categoría de servicio */}
-                <div>
-                  <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
+                {/* Tratamientos (uno o varios) */}
+                <div className="space-y-4">
+                  <label className="block text-[#745E73] text-xs tracking-widest uppercase" style={{ fontFamily: "'Lato', sans-serif" }}>
                     Servicio <span className="text-red-400">*</span>
                   </label>
-                  <select
-                    name="categoria" value={form.categoria} onChange={handle}
-                    className={inputClass('servicio')}
-                  >
-                    <option value="">Selecciona una categoría</option>
-                    {servicios.map((s) => (
-                      <option key={s.group} value={s.group}>{s.group}</option>
-                    ))}
-                  </select>
-                </div>
 
-                {/* Tratamiento específico — aparece al elegir categoría */}
-                {form.categoria && (
-                  <div>
-                    <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
-                      Tratamiento <span className="text-red-400">*</span>
-                    </label>
-                    <select
-                      name="servicio" value={form.servicio} onChange={handle}
-                      className={inputClass('servicio')}
-                    >
-                      <option value="">Selecciona el tratamiento</option>
-                      {servicios.find((s) => s.group === form.categoria)?.options.map((o) => (
-                        <option key={o} value={o}>{o}</option>
-                      ))}
-                    </select>
-                    {errors.servicio && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
-                  </div>
-                )}
+                  {form.tratamientos.map((item, idx) => (
+                    <div key={idx} className="border border-[#E8D5DA] rounded-xl p-4 space-y-3 relative">
+                      {/* Botón eliminar — solo si hay más de uno */}
+                      {form.tratamientos.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeTratamiento(idx)}
+                          className="absolute top-3 right-3 text-[#C4849A] hover:text-[#513550] transition-colors"
+                          aria-label="Eliminar tratamiento"
+                        >
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      )}
+
+                      {/* Categoría */}
+                      <select
+                        value={item.categoria}
+                        onChange={(e) => handleTratamiento(idx, 'categoria', e.target.value)}
+                        className="form-input"
+                      >
+                        <option value="">Selecciona una categoría</option>
+                        {servicios.map((s) => (
+                          <option key={s.group} value={s.group}>{s.group}</option>
+                        ))}
+                      </select>
+
+                      {/* Tratamiento específico — aparece al elegir categoría */}
+                      {item.categoria && (
+                        <select
+                          value={item.servicio}
+                          onChange={(e) => handleTratamiento(idx, 'servicio', e.target.value)}
+                          className="form-input"
+                        >
+                          <option value="">Selecciona el tratamiento</option>
+                          {servicios.find((s) => s.group === item.categoria)?.options.map((o) => (
+                            <option key={o} value={o}>{o}</option>
+                          ))}
+                        </select>
+                      )}
+                    </div>
+                  ))}
+
+                  {errors.servicio && <p className="text-red-400 text-xs" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
+
+                  {/* Añadir otro tratamiento */}
+                  <button
+                    type="button"
+                    onClick={addTratamiento}
+                    className="flex items-center gap-2 text-[#513550] text-xs tracking-widest uppercase hover:text-[#C4849A] transition-colors"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    Añadir otro tratamiento
+                  </button>
+                </div>
 
                 {/* Fecha + Hora */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
