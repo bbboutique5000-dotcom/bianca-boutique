@@ -43,8 +43,8 @@ export default function Navbar() {
           <Image
             src="/images/logo.png"
             alt="Bianca Boutique"
-            width={130}
-            height={80}
+            width={200}
+            height={124}
             className="object-contain"
             priority
           />
@@ -89,8 +89,8 @@ export default function Navbar() {
           <Image
             src="/images/logo.png"
             alt="Bianca Boutique"
-            width={100}
-            height={62}
+            width={160}
+            height={99}
             className="object-contain"
             priority
           />
