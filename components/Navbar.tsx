@@ -44,14 +44,14 @@ export default function Navbar() {
           className="flex flex-col leading-none shrink-0 group"
         >
           <span
-            className="text-[#513550] text-[26px] font-normal tracking-wide leading-tight"
-            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+            className="text-bb-noir text-[26px] font-normal tracking-wide leading-tight"
+            style={{ fontFamily: 'var(--bb-font-heading)' }}
           >
             Bianca
           </span>
           <span
-            className="text-[#513550]/80 text-[12px] font-light tracking-[0.22em] leading-tight"
-            style={{ fontFamily: "'Lato', sans-serif" }}
+            className="text-bb-noir/80 text-[12px] font-light tracking-[0.22em] leading-tight"
+            style={{ fontFamily: 'var(--bb-font-body)' }}
           >
             Boutique<span className="text-[8px] align-super ml-0.5">®</span>
           </span>
@@ -64,8 +64,8 @@ export default function Navbar() {
               <a
                 key={l.label}
                 href={l.href}
-                className="text-[#513550] hover:text-[#745E73] text-[16px] font-bold tracking-[0.16em] uppercase transition-colors duration-200"
-                style={{ fontFamily: "'Lato', sans-serif" }}
+                className="text-bb-noir hover:text-bb-rose-dark text-[16px] font-bold tracking-[0.16em] uppercase transition-colors duration-200"
+                style={{ fontFamily: 'var(--bb-font-body)' }}
               >
                 {l.label}
               </a>
@@ -81,7 +81,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="text-[#513550]/70 hover:text-[#513550] border border-[#513550]/40 hover:border-[#513550] rounded-full p-[5px] transition-all duration-200"
+                className="text-bb-noir/70 hover:text-bb-noir border border-bb-noir/40 hover:border-bb-noir rounded-full p-[5px] transition-all duration-200"
               >
                 {s.icon}
               </a>
@@ -95,7 +95,7 @@ export default function Navbar() {
         <a
           href="/"
           className="text-white text-base tracking-widest italic"
-          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+          style={{ fontFamily: 'var(--bb-font-heading)' }}
         >
           Bianca Boutique
         </a>
@@ -104,22 +104,22 @@ export default function Navbar() {
           className="flex flex-col gap-1.5 p-1 md:hidden"
           aria-label="Menú"
         >
-          <span className={`block h-px w-6 bg-[#513550] transition-all duration-300 ${open ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block h-px w-6 bg-[#513550] transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
-          <span className={`block h-px w-6 bg-[#513550] transition-all duration-300 ${open ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span className={`block h-px w-6 bg-bb-noir transition-all duration-300 ${open ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block h-px w-6 bg-bb-noir transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
+          <span className={`block h-px w-6 bg-bb-noir transition-all duration-300 ${open ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
       </div>
 
       {/* Mobile dropdown */}
-      <div className={`md:hidden overflow-hidden transition-all duration-400 bg-white border-t border-[#EBE1E5] ${open ? 'max-h-80' : 'max-h-0'}`}>
+      <div className={`md:hidden overflow-hidden transition-all duration-400 bg-white border-t border-bb-rose-light ${open ? 'max-h-80' : 'max-h-0'}`}>
         <nav className="flex flex-col items-center gap-5 py-7 border-t border-white/10">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="text-[#513550] hover:text-[#745E73] text-xs tracking-[0.2em] uppercase"
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className="text-bb-noir hover:text-bb-rose-dark text-xs tracking-[0.2em] uppercase"
+              style={{ fontFamily: 'var(--bb-font-body)' }}
             >
               {l.label}
             </a>
@@ -131,7 +131,7 @@ export default function Navbar() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#513550]/70 hover:text-[#513550] border border-[#513550]/40 rounded-full p-1.5"
+                className="text-bb-noir/70 hover:text-bb-noir border border-bb-noir/40 rounded-full p-1.5"
               >
                 {s.icon}
               </a>

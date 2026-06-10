@@ -11,7 +11,7 @@ const allProducts = {
     name: 'Línea Elite',
     tagline: 'Lo mejor de lo mejor',
     badge: '★ Premium',
-    color: '#513550',
+    color: 'var(--bb-noir)',
     description:
       'Formulaciones de última generación con ingredientes activos de alta concentración. Para quienes exigen resultados extraordinarios.',
     items: [
@@ -77,7 +77,7 @@ const allProducts = {
     name: 'Línea Excelente',
     tagline: 'Calidad profesional para uso diario',
     badge: '✦ Recomendado',
-    color: '#745E73',
+    color: 'var(--bb-rose-dark)',
     description:
       'Resultados visibles y duraderos con ingredientes probados. La elección de nuestras clientas más fieles.',
     items: [
@@ -143,7 +143,7 @@ const allProducts = {
     name: 'Línea Buena',
     tagline: 'El mejor equilibrio calidad-precio',
     badge: '◎ Esencial',
-    color: '#8B6F82',
+    color: 'var(--bb-rose-dark)',
     description:
       'Productos eficaces a un precio accesible. Perfectos para empezar tu rutina de cuidado o complementar tu tratamiento.',
     items: [
@@ -216,26 +216,26 @@ export default function ProductosPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-[78px] bg-[#FCFAFB] min-h-screen">
+      <main className="pt-[78px] bg-bb-ivory min-h-screen">
 
         {/* Hero de página */}
-        <div className="bg-[#513550] py-16 text-center">
+        <div className="bg-bb-noir py-16 text-center">
           <span
-            className="text-[#D3BCC5] text-xs tracking-[0.4em] uppercase block mb-3"
-            style={{ fontFamily: "'Lato', sans-serif" }}
+            className="text-bb-rose text-xs tracking-[0.4em] uppercase block mb-3"
+            style={{ fontFamily: 'var(--bb-font-body)' }}
           >
             Tienda Bianca Boutique
           </span>
           <h1
             className="text-white text-4xl md:text-6xl font-light tracking-wide mb-4"
-            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+            style={{ fontFamily: 'var(--bb-font-heading)' }}
           >
             Todos los Productos
           </h1>
           <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-12 bg-[#D3BCC5]/50" />
-            <div className="w-1.5 h-1.5 rounded-full bg-[#D3BCC5]/50" />
-            <div className="h-px w-12 bg-[#D3BCC5]/50" />
+            <div className="h-px w-12 bg-bb-rose/50" />
+            <div className="w-1.5 h-1.5 rounded-full bg-bb-rose/50" />
+            <div className="h-px w-12 bg-bb-rose/50" />
           </div>
         </div>
 
@@ -249,10 +249,10 @@ export default function ProductosPage() {
                 onClick={() => setActiveTab(key)}
                 className={`px-8 py-4 text-xs tracking-[0.2em] uppercase border transition-all duration-300 ${
                   activeTab === key
-                    ? 'bg-[#513550] text-white border-[#513550]'
-                    : 'bg-white text-[#513550] border-[#D3BCC5] hover:border-[#513550]'
+                    ? 'bg-bb-noir text-white border-bb-noir'
+                    : 'bg-white text-bb-noir border-bb-rose hover:border-bb-noir'
                 }`}
-                style={{ fontFamily: "'Lato', sans-serif" }}
+                style={{ fontFamily: 'var(--bb-font-body)' }}
               >
                 {allProducts[key].name}
               </button>
@@ -263,19 +263,19 @@ export default function ProductosPage() {
           <div className="text-center mb-12">
             <span
               className="inline-block px-4 py-1 text-xs tracking-widest uppercase mb-3"
-              style={{ fontFamily: "'Lato', sans-serif", color: line.color, border: `1px solid ${line.color}` }}
+              style={{ fontFamily: 'var(--bb-font-body)', color: line.color, border: `1px solid ${line.color}` }}
             >
               {line.badge}
             </span>
             <h2
-              className="text-[#513550] text-3xl font-light mb-2"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+              className="text-bb-noir text-3xl font-light mb-2"
+              style={{ fontFamily: 'var(--bb-font-heading)' }}
             >
               {line.tagline}
             </h2>
             <p
-              className="text-[#745E73] text-sm max-w-lg mx-auto"
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className="text-bb-rose-dark text-sm max-w-lg mx-auto"
+              style={{ fontFamily: 'var(--bb-font-body)' }}
             >
               {line.description}
             </p>
@@ -286,7 +286,7 @@ export default function ProductosPage() {
             {line.items.map((p) => (
               <div
                 key={p.id}
-                className="group bg-white border border-[#EBE1E5] hover:border-[#D3BCC5] hover:shadow-xl transition-all duration-300 overflow-hidden"
+                className="group bg-white border border-bb-rose-light hover:border-bb-rose hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -297,35 +297,35 @@ export default function ProductosPage() {
                   />
                   <span
                     className="absolute top-2 left-2 px-2 py-0.5 text-[9px] tracking-widest uppercase text-white"
-                    style={{ fontFamily: "'Lato', sans-serif", backgroundColor: line.color }}
+                    style={{ fontFamily: 'var(--bb-font-body)', backgroundColor: line.color }}
                   >
                     {line.badge}
                   </span>
                 </div>
                 <div className="p-4">
                   <h3
-                    className="text-[#513550] text-base font-light tracking-wide mb-2 leading-snug"
-                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    className="text-bb-noir text-base font-light tracking-wide mb-2 leading-snug"
+                    style={{ fontFamily: 'var(--bb-font-heading)' }}
                   >
                     {p.name}
                   </h3>
                   <p
-                    className="text-[#745E73] text-xs leading-relaxed mb-4"
-                    style={{ fontFamily: "'Lato', sans-serif" }}
+                    className="text-bb-rose-dark text-xs leading-relaxed mb-4"
+                    style={{ fontFamily: 'var(--bb-font-body)' }}
                   >
                     {p.description}
                   </p>
-                  <div className="flex items-center justify-between pt-3 border-t border-[#EBE1E5]">
+                  <div className="flex items-center justify-between pt-3 border-t border-bb-rose-light">
                     <span
-                      className="text-[#513550] text-base font-light"
-                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                      className="text-bb-noir text-base font-light"
+                      style={{ fontFamily: 'var(--bb-font-heading)' }}
                     >
                       {p.price}
                     </span>
                     <a
                       href="/#reservar"
-                      className="px-3 py-1.5 text-[9px] tracking-[0.2em] uppercase border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white transition-all duration-300"
-                      style={{ fontFamily: "'Lato', sans-serif" }}
+                      className="px-3 py-1.5 text-[9px] tracking-[0.2em] uppercase border border-bb-noir text-bb-noir hover:bg-bb-noir hover:text-white transition-all duration-300"
+                      style={{ fontFamily: 'var(--bb-font-body)' }}
                     >
                       Pedir
                     </a>
@@ -339,8 +339,8 @@ export default function ProductosPage() {
           <div className="text-center">
             <Link
               href="/"
-              className="inline-block px-10 py-4 border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className="inline-block px-10 py-4 border border-bb-noir text-bb-noir hover:bg-bb-noir hover:text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
+              style={{ fontFamily: 'var(--bb-font-body)' }}
             >
               ← Volver al Inicio
             </Link>

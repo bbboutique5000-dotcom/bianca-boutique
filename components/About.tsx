@@ -9,7 +9,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="nosotras" className="py-24 bg-[#EBE1E5]">
+    <section id="nosotras" className="py-24 bg-bb-rose-light">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Historia de Bianca */}
@@ -24,16 +24,16 @@ export default function About() {
               />
             </div>
             {/* Tarjeta flotante */}
-            <div className="absolute -bottom-8 -right-4 md:-right-8 bg-[#513550] text-white px-8 py-6 shadow-xl">
+            <div className="absolute -bottom-8 -right-4 md:-right-8 bg-bb-noir text-white px-8 py-6 shadow-xl">
               <p
                 className="text-3xl font-light mb-1"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                style={{ fontFamily: 'var(--bb-font-heading)' }}
               >
                 Desde 2014
               </p>
               <p
-                className="text-[#D3BCC5] text-xs tracking-widest uppercase"
-                style={{ fontFamily: "'Lato', sans-serif" }}
+                className="text-bb-rose text-xs tracking-widest uppercase"
+                style={{ fontFamily: 'var(--bb-font-body)' }}
               >
                 Arte & Pasión
               </p>
@@ -42,23 +42,23 @@ export default function About() {
 
           <div className="lg:pl-8">
             <span
-              className="text-[#745E73] text-xs tracking-[0.4em] uppercase block mb-4"
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className="text-bb-rose-dark text-xs tracking-[0.4em] uppercase block mb-4"
+              style={{ fontFamily: 'var(--bb-font-body)' }}
             >
               Acerca de mí
             </span>
             <h2
-              className="text-[#513550] text-4xl md:text-5xl font-light tracking-wide mb-6 leading-tight"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+              className="text-bb-noir text-4xl md:text-5xl font-light tracking-wide mb-6 leading-tight"
+              style={{ fontFamily: 'var(--bb-font-heading)' }}
             >
               Más que una Artista,<br />
               <span className="italic">una Transformación</span>
             </h2>
-            <div className="h-px w-16 bg-[#D3BCC5] mb-8" />
+            <div className="h-px w-16 bg-bb-rose mb-8" />
 
             <p
-              className="text-[#513550]/80 leading-relaxed mb-5 text-base"
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className="text-bb-noir/80 leading-relaxed mb-5 text-base"
+              style={{ fontFamily: 'var(--bb-font-body)' }}
             >
               Soy Bianca, artista especializada en belleza ocular y tratamientos faciales
               en Madrid, con más de <strong>10 años de experiencia</strong> dedicados en cuerpo y alma
@@ -67,8 +67,8 @@ export default function About() {
               y un compromiso inquebrantable con la excelencia.
             </p>
             <p
-              className="text-[#513550]/80 leading-relaxed mb-5 text-base"
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className="text-bb-noir/80 leading-relaxed mb-5 text-base"
+              style={{ fontFamily: 'var(--bb-font-body)' }}
             >
               A lo largo de mi carrera he tenido el privilegio de transformar más de
               3.000 miradas, trabajando con extensiones de pestañas, lifting, laminado
@@ -77,8 +77,8 @@ export default function About() {
               porque para mí no existen dos miradas iguales.
             </p>
             <p
-              className="text-[#513550]/80 leading-relaxed mb-8 text-base"
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className="text-bb-noir/80 leading-relaxed mb-8 text-base"
+              style={{ fontFamily: 'var(--bb-font-body)' }}
             >
               Mi filosofía es simple: <em>calidad sin concesiones y satisfacción garantizada.</em>{' '}
               Utilizo exclusivamente productos premium hipoalergénicos y técnicas certificadas
@@ -86,29 +86,25 @@ export default function About() {
               seguro y duradero.
             </p>
 
-            <a
-              href="#reservar"
-              className="inline-block px-8 py-3 border border-[#513550] text-[#513550] hover:bg-[#513550] hover:text-white text-xs tracking-[0.25em] uppercase transition-all duration-300"
-              style={{ fontFamily: "'Lato', sans-serif" }}
-            >
+            <a href="#reservar" className="bb-btn-secondary">
               Reserva tu Cita
             </a>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#D3BCC5]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-bb-rose">
           {stats.map((s) => (
-            <div key={s.label} className="bg-[#EBE1E5] text-center py-10 px-4">
+            <div key={s.label} className="bg-bb-rose-light text-center py-10 px-4">
               <p
-                className="text-[#513550] text-4xl font-light mb-2"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                className="text-bb-noir text-4xl font-light mb-2"
+                style={{ fontFamily: 'var(--bb-font-heading)' }}
               >
                 {s.value}
               </p>
               <p
-                className="text-[#745E73] text-xs tracking-[0.15em] uppercase"
-                style={{ fontFamily: "'Lato', sans-serif" }}
+                className="text-bb-rose-dark text-xs tracking-[0.15em] uppercase"
+                style={{ fontFamily: 'var(--bb-font-body)' }}
               >
                 {s.label}
               </p>

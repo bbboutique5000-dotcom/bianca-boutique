@@ -59,26 +59,26 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="py-24 bg-[#FCFAFB]">
+    <section id="servicios" className="py-24 bg-bb-ivory">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <span
-            className="text-[#745E73] text-xs tracking-[0.4em] uppercase block mb-4"
-            style={{ fontFamily: "'Lato', sans-serif" }}
+            className="text-bb-rose-dark text-xs tracking-[0.4em] uppercase block mb-4"
+            style={{ fontFamily: 'var(--bb-font-body)' }}
           >
             Estudio de Belleza · Madrid
           </span>
           <h2
-            className="text-[#513550] text-4xl md:text-5xl font-light tracking-wide mb-6"
-            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+            className="text-bb-noir text-4xl md:text-5xl font-light tracking-wide mb-6"
+            style={{ fontFamily: 'var(--bb-font-heading)' }}
           >
             Nuestros Servicios
           </h2>
           <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-12 bg-[#D3BCC5]" />
-            <div className="w-1.5 h-1.5 rounded-full bg-[#D3BCC5]" />
-            <div className="h-px w-12 bg-[#D3BCC5]" />
+            <div className="h-px w-12 bg-bb-rose" />
+            <div className="w-1.5 h-1.5 rounded-full bg-bb-rose" />
+            <div className="h-px w-12 bg-bb-rose" />
           </div>
         </div>
 
@@ -87,7 +87,7 @@ export default function Services() {
           {services.map((s) => (
             <div
               key={s.id}
-              className="group bg-white border border-[#EBE1E5] hover:border-[#D3BCC5] hover:shadow-xl transition-all duration-400 overflow-hidden"
+              className="group bg-white border border-bb-rose-light hover:border-bb-rose hover:shadow-xl transition-all duration-400 overflow-hidden"
             >
               <div className="relative h-56 overflow-hidden">
                 <Image
@@ -96,31 +96,31 @@ export default function Services() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-[#513550]/20 group-hover:bg-[#513550]/10 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-bb-noir/20 group-hover:bg-bb-noir/10 transition-colors duration-300" />
               </div>
               <div className="p-6">
                 <h3
-                  className="text-[#513550] text-xl mb-3 font-light tracking-wide"
-                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                  className="text-bb-noir text-xl mb-3 font-light tracking-wide"
+                  style={{ fontFamily: 'var(--bb-font-heading)' }}
                 >
                   {s.title}
                 </h3>
                 <p
-                  className="text-[#745E73] text-sm leading-relaxed mb-5"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
+                  className="text-bb-rose-dark text-sm leading-relaxed mb-5"
+                  style={{ fontFamily: 'var(--bb-font-body)' }}
                 >
                   {s.description}
                 </p>
-                <div className="flex items-center justify-between pt-4 border-t border-[#EBE1E5]">
+                <div className="flex items-center justify-between pt-4 border-t border-bb-rose-light">
                   <span
-                    className="text-[#745E73] text-xs tracking-wide"
-                    style={{ fontFamily: "'Lato', sans-serif" }}
+                    className="text-bb-rose-dark text-xs tracking-wide"
+                    style={{ fontFamily: 'var(--bb-font-body)' }}
                   >
                     ⏱ {s.duration}
                   </span>
                   <span
-                    className="text-[#513550] text-sm font-medium tracking-wide"
-                    style={{ fontFamily: "'Lato', sans-serif" }}
+                    className="text-bb-noir text-sm font-medium tracking-wide"
+                    style={{ fontFamily: 'var(--bb-font-body)' }}
                   >
                     {s.desde}
                   </span>
@@ -132,11 +132,7 @@ export default function Services() {
 
         {/* CTA */}
         <div className="text-center mt-14">
-          <a
-            href="#reservar"
-            className="inline-block px-10 py-4 bg-[#513550] hover:bg-[#745E73] text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
-            style={{ fontFamily: "'Lato', sans-serif" }}
-          >
+          <a href="#reservar" className="bb-btn-primary">
             Reservar Ahora
           </a>
         </div>
