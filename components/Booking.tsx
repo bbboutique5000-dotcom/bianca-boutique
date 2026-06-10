@@ -92,35 +92,37 @@ export default function Booking() {
     finally { setLoading(false); }
   };
 
-  const inputClass = (name: string) => {
-    const hasError = errors[name] || ((name === 'email' || name === 'telefono') && errors.contacto);
-    return hasError ? 'bb-input error' : 'bb-input';
-  };
+  const inputClass = (name: string) =>
+    `w-full px-4 py-3 text-sm text-[#513550] outline-none transition-colors border ${
+      errors[name] || (name === 'email' || name === 'telefono') && errors.contacto
+        ? 'border-red-400 bg-red-50'
+        : 'border-[#D3BCC5] bg-white focus:border-[#513550]'
+    }`;
 
   return (
-    <section id="reservar" className="py-24 bg-bb-noir">
+    <section id="reservar" className="py-24 bg-[#513550]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
           {/* Info izquierda */}
           <div>
             <span
-              className="text-bb-rose text-xs tracking-[0.4em] uppercase block mb-4"
-              style={{ fontFamily: 'var(--bb-font-body)' }}
+              className="text-[#D3BCC5] text-xs tracking-[0.4em] uppercase block mb-4"
+              style={{ fontFamily: "'Lato', sans-serif" }}
             >
               Pide tu cita
             </span>
             <h2
               className="text-white text-4xl md:text-5xl font-light tracking-wide mb-6 leading-tight"
-              style={{ fontFamily: 'var(--bb-font-heading)' }}
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
               Reserva tu<br />
-              <span className="italic text-bb-rose">Experiencia</span>
+              <span className="italic text-[#D3BCC5]">Experiencia</span>
             </h2>
-            <div className="h-px w-16 bg-bb-rose/50 mb-8" />
+            <div className="h-px w-16 bg-[#D3BCC5]/50 mb-8" />
             <p
-              className="text-bb-rose-light leading-relaxed mb-10 text-base"
-              style={{ fontFamily: 'var(--bb-font-body)' }}
+              className="text-[#EBE1E5] leading-relaxed mb-10 text-base"
+              style={{ fontFamily: "'Lato', sans-serif" }}
             >
               Rellena el formulario y nos pondremos en contacto contigo en menos
               de 24 horas para confirmar tu cita. También puedes llamarnos o
@@ -151,10 +153,10 @@ export default function Booking() {
                 },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
-                  <div className="text-bb-rose mt-0.5 shrink-0">{item.icon}</div>
+                  <div className="text-[#D3BCC5] mt-0.5 shrink-0">{item.icon}</div>
                   <div>
-                    <p className="text-bb-rose text-xs tracking-widest uppercase mb-1" style={{ fontFamily: 'var(--bb-font-body)' }}>{item.label}</p>
-                    <p className="text-white text-sm" style={{ fontFamily: 'var(--bb-font-body)' }}>{item.value}</p>
+                    <p className="text-[#D3BCC5] text-xs tracking-widest uppercase mb-1" style={{ fontFamily: "'Lato', sans-serif" }}>{item.label}</p>
+                    <p className="text-white text-sm" style={{ fontFamily: "'Lato', sans-serif" }}>{item.value}</p>
                   </div>
                 </div>
               ))}
@@ -162,91 +164,107 @@ export default function Booking() {
           </div>
 
           {/* Formulario */}
-          <div className="bg-bb-ivory p-8 md:p-10">
+          <div className="bg-[#FCFAFB] p-8 md:p-10">
             {sent ? (
               <div className="text-center py-16">
-                <div className="text-bb-noir mb-4">
+                <div className="text-[#513550] mb-4">
                   <svg className="w-12 h-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-bb-noir text-2xl font-light mb-3" style={{ fontFamily: 'var(--bb-font-heading)' }}>
+                <h3 className="text-[#513550] text-2xl font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   ¡Solicitud Enviada!
                 </h3>
-                <p className="text-bb-rose-dark text-sm" style={{ fontFamily: 'var(--bb-font-body)' }}>
+                <p className="text-[#745E73] text-sm" style={{ fontFamily: "'Lato', sans-serif" }}>
                   Nos pondremos en contacto contigo en breve para confirmar tu cita.
                 </p>
               </div>
             ) : (
               <form onSubmit={submit} noValidate className="space-y-5">
-                <h3 className="text-bb-noir text-2xl font-light mb-6" style={{ fontFamily: 'var(--bb-font-heading)' }}>
+                <h3 className="text-[#513550] text-2xl font-light mb-6" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Solicita tu Cita
                 </h3>
 
                 {/* Nombre */}
                 <div>
-                  <label className="bb-label-form">
+                  <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
                     Nombre <span className="text-red-400">*</span>
                   </label>
-                  <input type="text" name="nombre" value={form.nombre} onChange={handle}
-                    className={inputClass('nombre')} placeholder="Tu nombre" />
-                  {errors.nombre && <p className="text-red-400 text-xs mt-1">{errors.nombre}</p>}
+                  <input
+                    type="text" name="nombre" value={form.nombre} onChange={handle}
+                    className={inputClass('nombre')} style={{ fontFamily: "'Lato', sans-serif" }}
+                    placeholder="Tu nombre"
+                  />
+                  {errors.nombre && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.nombre}</p>}
                 </div>
 
                 {/* Email y Teléfono — al menos uno */}
                 <div>
-                  <label className="bb-label-form mb-1">
+                  <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-1" style={{ fontFamily: "'Lato', sans-serif" }}>
                     Contacto <span className="text-red-400">*</span>
-                    <span className="normal-case tracking-normal font-normal text-bb-rose-dark/60 ml-1">— email, teléfono o ambos</span>
+                    <span className="normal-case tracking-normal font-normal text-[#745E73]/60 ml-1">— email, teléfono o ambos</span>
                   </label>
-                  {errors.contacto && <p className="text-red-400 text-xs mb-2">{errors.contacto}</p>}
+                  {errors.contacto && <p className="text-red-400 text-xs mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.contacto}</p>}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                    <input type="email" name="email" value={form.email} onChange={handle}
-                      className={inputClass('email')} placeholder="tucorreo@email.com" />
-                    <input type="tel" name="telefono" value={form.telefono} onChange={handle}
-                      className={inputClass('telefono')} placeholder="+34 600 000 000" />
+                    <input
+                      type="email" name="email" value={form.email} onChange={handle}
+                      className={inputClass('email')} style={{ fontFamily: "'Lato', sans-serif" }}
+                      placeholder="tucorreo@email.com"
+                    />
+                    <input
+                      type="tel" name="telefono" value={form.telefono} onChange={handle}
+                      className={inputClass('telefono')} style={{ fontFamily: "'Lato', sans-serif" }}
+                      placeholder="+34 600 000 000"
+                    />
                   </div>
                 </div>
 
                 {/* Servicio */}
                 <div>
-                  <label className="bb-label-form">
+                  <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
                     Servicio <span className="text-red-400">*</span>
                   </label>
-                  <select name="servicio" value={form.servicio} onChange={handle}
-                    className={inputClass('servicio')}>
+                  <select
+                    name="servicio" value={form.servicio} onChange={handle}
+                    className={`${inputClass('servicio')} appearance-none`} style={{ fontFamily: "'Lato', sans-serif" }}
+                  >
                     <option value="">Selecciona un servicio</option>
                     {servicios.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
-                  {errors.servicio && <p className="text-red-400 text-xs mt-1">{errors.servicio}</p>}
+                  {errors.servicio && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
                 </div>
 
                 {/* Fecha + Hora */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="bb-label-form">
+                    <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
                       Fecha <span className="text-red-400">*</span>
                     </label>
-                    <input type="date" name="fecha" value={form.fecha} onChange={handle}
-                      className={inputClass('fecha')} />
-                    {errors.fecha && <p className="text-red-400 text-xs mt-1">{errors.fecha}</p>}
+                    <input
+                      type="date" name="fecha" value={form.fecha} onChange={handle}
+                      className={inputClass('fecha')} style={{ fontFamily: "'Lato', sans-serif" }}
+                    />
+                    {errors.fecha && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.fecha}</p>}
                   </div>
                   <div>
-                    <label className="bb-label-form">
+                    <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
                       Hora <span className="text-red-400">*</span>
                     </label>
                     {(() => {
                       const horas = getHorasDisponibles(form.fecha);
                       if (form.fecha && horas.length === 0) {
                         return (
-                          <p className="text-bb-rose-dark text-xs py-3 px-4 border border-bb-rose bg-bb-rose-light/60">
+                          <p className="text-[#745E73] text-xs py-3 px-4 border border-[#D3BCC5] bg-[#F5EFF1]" style={{ fontFamily: "'Lato', sans-serif" }}>
                             Domingos cerrado. Elige otra fecha.
                           </p>
                         );
                       }
                       return (
-                        <select name="hora" value={form.hora} onChange={handle}
-                          className={inputClass('hora')}>
+                        <select
+                          name="hora" value={form.hora} onChange={handle}
+                          className={`${inputClass('hora')} appearance-none`}
+                          style={{ fontFamily: "'Lato', sans-serif" }}
+                        >
                           <option value="">Selecciona una hora</option>
                           {horas.map((h) => (
                             <option key={h} value={h}>{h}</option>
@@ -254,26 +272,33 @@ export default function Booking() {
                         </select>
                       );
                     })()}
-                    {errors.hora && <p className="text-red-400 text-xs mt-1">{errors.hora}</p>}
+                    {errors.hora && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.hora}</p>}
                   </div>
                 </div>
 
                 {/* Mensaje */}
                 <div>
-                  <label className="bb-label-form">Mensaje (opcional)</label>
-                  <textarea name="mensaje" rows={3} value={form.mensaje} onChange={handle}
-                    className={`${inputClass('mensaje')} resize-none`}
-                    placeholder="¿Tienes alguna pregunta o preferencia?" />
+                  <label className="block text-[#745E73] text-xs tracking-widest uppercase mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
+                    Mensaje (opcional)
+                  </label>
+                  <textarea
+                    name="mensaje" rows={3} value={form.mensaje} onChange={handle}
+                    className={`${inputClass('mensaje')} resize-none`} style={{ fontFamily: "'Lato', sans-serif" }}
+                    placeholder="¿Tienes alguna pregunta o preferencia?"
+                  />
                 </div>
 
                 {serverError && (
-                  <p className="text-red-400 text-xs text-center">
+                  <p className="text-red-400 text-xs text-center" style={{ fontFamily: "'Lato', sans-serif" }}>
                     Hubo un error al enviar. Inténtalo de nuevo o escríbenos por WhatsApp.
                   </p>
                 )}
 
-                <button type="submit" disabled={loading}
-                  className="bb-btn-primary w-full justify-center disabled:opacity-60">
+                <button
+                  type="submit" disabled={loading}
+                  className="w-full py-4 bg-[#513550] hover:bg-[#745E73] disabled:opacity-60 text-white text-xs tracking-[0.3em] uppercase transition-all duration-300"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
                   {loading ? 'Enviando...' : 'Enviar Solicitud'}
                 </button>
               </form>
@@ -284,11 +309,11 @@ export default function Booking() {
         {/* Mapa */}
         <div className="mt-16">
           <div className="flex items-center gap-3 mb-6">
-            <svg className="w-5 h-5 text-bb-rose" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-5 h-5 text-[#D3BCC5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <span className="text-bb-rose text-xs tracking-[0.3em] uppercase" style={{ fontFamily: 'var(--bb-font-body)' }}>
+            <span className="text-[#D3BCC5] text-xs tracking-[0.3em] uppercase" style={{ fontFamily: "'Lato', sans-serif" }}>
               Cómo llegar — Calle de Serrano, 45, 28001 Madrid
             </span>
           </div>

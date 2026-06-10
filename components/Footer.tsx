@@ -8,30 +8,30 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-bb-noir text-bb-rose-light">
+    <footer className="bg-[#1a1a1a] text-[#EBE1E5]">
       {/* Franja superior */}
-      <div className="border-b border-bb-noir/40 py-16">
+      <div className="border-b border-[#513550]/40 py-16">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
 
           {/* Marca */}
           <div>
             <div className="mb-4">
               <span
-                className="text-bb-rose text-xs tracking-[0.4em] uppercase block"
-                style={{ fontFamily: 'var(--bb-font-body)' }}
+                className="text-[#D3BCC5] text-xs tracking-[0.4em] uppercase block"
+                style={{ fontFamily: "'Lato', sans-serif" }}
               >
                 Bianca
               </span>
               <span
                 className="text-white text-3xl font-light tracking-widest"
-                style={{ fontFamily: 'var(--bb-font-heading)' }}
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
                 BOUTIQUE
               </span>
             </div>
             <p
-              className="text-bb-rose-light/60 text-sm leading-relaxed"
-              style={{ fontFamily: 'var(--bb-font-body)' }}
+              className="text-[#EBE1E5]/60 text-sm leading-relaxed"
+              style={{ fontFamily: "'Lato', sans-serif" }}
             >
               Estudio de belleza especializado en extensiones de pestañas y
               tratamientos oculares premium. Tu mirada, nuestra pasión.
@@ -41,8 +41,8 @@ export default function Footer() {
           {/* Navegación */}
           <div>
             <h4
-              className="text-bb-rose text-xs tracking-[0.3em] uppercase mb-6"
-              style={{ fontFamily: 'var(--bb-font-body)' }}
+              className="text-[#D3BCC5] text-xs tracking-[0.3em] uppercase mb-6"
+              style={{ fontFamily: "'Lato', sans-serif" }}
             >
               Navegación
             </h4>
@@ -51,8 +51,8 @@ export default function Footer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-bb-rose-light/70 hover:text-white text-sm tracking-wide transition-colors duration-200"
-                    style={{ fontFamily: 'var(--bb-font-body)' }}
+                    className="text-[#EBE1E5]/70 hover:text-white text-sm tracking-wide transition-colors duration-200"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
                   >
                     {l.label}
                   </a>
@@ -61,18 +61,18 @@ export default function Footer() {
               {/* Próximamente */}
               <li>
                 <span
-                  className="text-bb-rose-light/30 text-sm tracking-wide cursor-default"
-                  style={{ fontFamily: 'var(--bb-font-body)' }}
+                  className="text-[#EBE1E5]/30 text-sm tracking-wide cursor-default"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
                 >
-                  Videos <span className="text-xs text-bb-rose/50 ml-1">Próximamente</span>
+                  Videos <span className="text-xs text-[#D3BCC5]/50 ml-1">Próximamente</span>
                 </span>
               </li>
               <li>
                 <span
-                  className="text-bb-rose-light/30 text-sm tracking-wide cursor-default"
-                  style={{ fontFamily: 'var(--bb-font-body)' }}
+                  className="text-[#EBE1E5]/30 text-sm tracking-wide cursor-default"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
                 >
-                  Membresía <span className="text-xs text-bb-rose/50 ml-1">Próximamente</span>
+                  Membresía <span className="text-xs text-[#D3BCC5]/50 ml-1">Próximamente</span>
                 </span>
               </li>
             </ul>
@@ -81,8 +81,8 @@ export default function Footer() {
           {/* Contacto & Social */}
           <div>
             <h4
-              className="text-bb-rose text-xs tracking-[0.3em] uppercase mb-6"
-              style={{ fontFamily: 'var(--bb-font-body)' }}
+              className="text-[#D3BCC5] text-xs tracking-[0.3em] uppercase mb-6"
+              style={{ fontFamily: "'Lato', sans-serif" }}
             >
               Contacto
             </h4>
@@ -96,8 +96,8 @@ export default function Footer() {
               ].map((item) => (
                 <li
                   key={item.label}
-                  className="text-bb-rose-light/70 text-sm"
-                  style={{ fontFamily: 'var(--bb-font-body)' }}
+                  className="text-[#EBE1E5]/70 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
                 >
                   {item.label}
                 </li>
@@ -140,7 +140,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="text-bb-rose-light/50 hover:text-bb-rose transition-colors duration-300"
+                  className="text-[#EBE1E5]/50 hover:text-[#D3BCC5] transition-colors duration-300"
                 >
                   {s.icon}
                 </a>
@@ -154,14 +154,14 @@ export default function Footer() {
       <div className="py-6">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p
-            className="text-bb-rose-light/40 text-xs tracking-wide"
-            style={{ fontFamily: 'var(--bb-font-body)' }}
+            className="text-[#EBE1E5]/40 text-xs tracking-wide"
+            style={{ fontFamily: "'Lato', sans-serif" }}
           >
             © {new Date().getFullYear()} Bianca Boutique. Todos los derechos reservados.
           </p>
           <p
-            className="text-bb-rose-light/30 text-xs tracking-wide"
-            style={{ fontFamily: 'var(--bb-font-body)' }}
+            className="text-[#EBE1E5]/30 text-xs tracking-wide"
+            style={{ fontFamily: "'Lato', sans-serif" }}
           >
             Aviso Legal · Política de Privacidad · Cookies
           </p>

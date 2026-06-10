@@ -26,14 +26,14 @@ export default function Hero() {
           {/* "Pestañas" en serif italic — igual que "Lashes" en el original */}
           <span
             className="block text-5xl md:text-7xl font-light italic"
-            style={{ fontFamily: 'var(--bb-font-heading)' }}
+            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
           >
             Pestañas
           </span>
           {/* "PARA SIEMPRE" en sans uppercase — igual que "FOR DAYS" */}
           <span
             className="block text-4xl md:text-6xl font-light tracking-[0.12em] uppercase"
-            style={{ fontFamily: 'var(--bb-font-body)' }}
+            style={{ fontFamily: "'Lato', sans-serif" }}
           >
             Para Siempre
           </span>
@@ -43,7 +43,7 @@ export default function Hero() {
         <a
           href="#reservar"
           className="inline-block px-6 py-2.5 border border-white text-white text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-300"
-          style={{ fontFamily: 'var(--bb-font-body)' }}
+          style={{ fontFamily: "'Lato', sans-serif" }}
         >
           Reserva un servicio &rsaquo;
         </a>
@@ -53,7 +53,7 @@ export default function Hero() {
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10">
         <span
           className="text-white/80 text-xs tracking-[0.25em] uppercase"
-          style={{ fontFamily: 'var(--bb-font-body)' }}
+          style={{ fontFamily: "'Lato', sans-serif" }}
         >
           Scroll Down
         </span>

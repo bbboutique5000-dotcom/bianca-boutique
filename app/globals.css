@@ -1,18 +1,33 @@
 @import "tailwindcss";
-@import './styles/brand-tokens.css';
+
+:root {
+  --plum:       #513550;
+  --plum-mid:   #745E73;
+  --mauve:      #D3BCC5;
+  --lavender:   #EBE1E5;
+  --cream:      #FCFAFB;
+  --cream-dark: #F5EFF1;
+  --dark:       #1a1a1a;
+}
 
 @theme inline {
-  --color-bb-noir:       #0D0D0D;
-  --color-bb-rose:       #D4AEBE;
-  --color-bb-rose-light: #F0DDE6;
-  --color-bb-rose-dark:  #8B6270;
-  --color-bb-ivory:      #FAF6F4;
-  --color-bb-greige:     #C9BFC2;
-  --color-bb-gold:       #C9A96E;
-  --color-bb-gold-light: #EDD9B8;
-  --color-bb-white:      #FFFFFF;
+  --color-plum:       #513550;
+  --color-plum-mid:   #745E73;
+  --color-mauve:      #D3BCC5;
+  --color-lavender:   #EBE1E5;
+  --color-cream:      #FCFAFB;
+  --color-cream-dark: #F5EFF1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--dark);
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bb-rose-light); }
-::-webkit-scrollbar-thumb { background: var(--bb-rose-dark); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--lavender); }
+::-webkit-scrollbar-thumb { background: var(--plum-mid); border-radius: 3px; }
