@@ -7,7 +7,6 @@ const links = [
   { label: 'Acerca de Mí',  href: '/#nosotras' },
   { label: 'Reservar Cita', href: '/#reservar' },
   { label: 'Productos',     href: '/productos' },
-  { label: 'Galería',       href: '/#galeria' },
 ];
 
 const socials = [
