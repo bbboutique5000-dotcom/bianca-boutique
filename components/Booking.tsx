@@ -159,6 +159,8 @@ export default function Booking() {
     if (!form.nombre.trim()) errs.nombre = 'El nombre es obligatorio';
     if (!form.email.trim() && !form.telefono.trim())
       errs.contacto = 'Indica al menos un email o un teléfono';
+    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+      errs.email = 'El email no es válido (ej: nombre@correo.com)';
     if (form.telefono.trim()) {
       const tel = form.telefono.trim().replace(/[\s.\-()]/g, '');
       if (!/^(\+34|0034)?[6-9]\d{8}$/.test(tel))
@@ -324,11 +326,14 @@ export default function Booking() {
                   </label>
                   {errors.contacto && <p className="text-red-400 text-xs mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.contacto}</p>}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                    <input
-                      type="email" name="email" value={form.email} onChange={handle}
-                      className={inputClass('email')} style={{ fontFamily: "'Lato', sans-serif" }}
-                      placeholder="tucorreo@email.com"
-                    />
+                    <div>
+                      <input
+                        type="email" name="email" value={form.email} onChange={handle}
+                        className={inputClass('email')} style={{ fontFamily: "'Lato', sans-serif" }}
+                        placeholder="tucorreo@email.com"
+                      />
+                      {errors.email && <p className="text-red-400 text-xs mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.email}</p>}
+                    </div>
                     <div>
                       <input
                         type="tel" name="telefono" value={form.telefono} onChange={handle}
