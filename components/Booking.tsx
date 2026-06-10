@@ -2,6 +2,25 @@
 
 import { useState } from 'react';
 
+const parseDuration = (optionStr: string): { min: number; max: number } => {
+  const match = optionStr.match(/·\s*(\d+)(?:-(\d+))?\s*min/);
+  if (!match) return { min: 0, max: 0 };
+  const minVal = parseInt(match[1]);
+  const maxVal = match[2] ? parseInt(match[2]) : minVal;
+  return { min: minVal, max: maxVal };
+};
+
+const formatTotalTime = (totalMin: number, totalMax: number): string | null => {
+  if (totalMin === 0) return null;
+  const fmt = (m: number) => {
+    if (m < 60) return `${m} min`;
+    const h = Math.floor(m / 60);
+    const rem = m % 60;
+    return rem > 0 ? `${h}h ${rem} min` : `${h}h`;
+  };
+  return totalMin === totalMax ? fmt(totalMin) : `${fmt(totalMin)} – ${fmt(totalMax)}`;
+};
+
 const generarHoras = (desde: number, hasta: number) => {
   const slots: string[] = [];
   for (let h = desde; h < hasta; h++) {
@@ -165,6 +184,7 @@ export default function Booking() {
             .filter((t) => t.servicio)
             .map((t) => t.servicio)
             .join(' | '),
+          'Duración estimada': totalTime || '—',
           'Fecha preferida': form.fecha || '—',
           'Hora preferida': form.hora || '—',
           Mensaje: form.mensaje || '—',
@@ -174,6 +194,17 @@ export default function Booking() {
     } catch { setServerError(true); }
     finally { setLoading(false); }
   };
+
+  const totalTime = (() => {
+    let tMin = 0, tMax = 0;
+    for (const t of form.tratamientos) {
+      if (!t.servicio) continue;
+      const { min, max } = parseDuration(t.servicio);
+      tMin += min;
+      tMax += max;
+    }
+    return formatTotalTime(tMin, tMax);
+  })();
 
   const inputClass = (name: string) => {
     const hasError = errors[name] || ((name === 'email' || name === 'telefono') && errors.contacto);
@@ -351,6 +382,21 @@ export default function Booking() {
                   ))}
 
                   {errors.servicio && <p className="text-red-400 text-xs" style={{ fontFamily: "'Lato', sans-serif" }}>{errors.servicio}</p>}
+
+                  {/* Total de tiempo estimado */}
+                  {totalTime && (
+                    <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F5EFF1] border border-[#E8D5DA] rounded-xl">
+                      <svg className="w-4 h-4 text-[#745E73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-[#745E73] text-xs" style={{ fontFamily: "'Lato', sans-serif" }}>
+                        Tiempo total estimado:
+                      </span>
+                      <span className="text-[#513550] text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                        {totalTime}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Añadir otro tratamiento */}
                   <button
