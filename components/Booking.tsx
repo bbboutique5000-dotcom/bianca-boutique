@@ -292,9 +292,11 @@ export default function Booking() {
                   </p>
                 )}
 
-                <button type="submit" disabled={loading} className="btn-primary w-full">
-                  {loading ? 'Enviando...' : 'Enviar Solicitud'}
-                </button>
+                <div className="flex justify-center">
+                  <button type="submit" disabled={loading} className="btn-primary">
+                    {loading ? 'Enviando...' : 'Enviar Solicitud'}
+                  </button>
+                </div>
               </form>
             )}
           </div>
